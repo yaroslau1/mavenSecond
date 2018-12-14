@@ -1,4 +1,4 @@
-package com.work.DAO;
+package com.work.dao;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Properties;
 
 import com.work.entity.Country;
-import com.work.exeption.DAOException;
+import com.work.exсeption.DAOException;
 
 public class CountryConnectDAO implements CountryDAO, AutoCloseable{
 
@@ -91,7 +91,7 @@ public class CountryConnectDAO implements CountryDAO, AutoCloseable{
 			}
 		}
 		if (exception.getSuppressed().length > 0) {
-			throw new DAOException("errors with closing PrepereStatement in countries DAO", exception);
+			throw new DAOException("errors with closing PrepereStatement in countries dao", exception);
 		}
 	}
 
