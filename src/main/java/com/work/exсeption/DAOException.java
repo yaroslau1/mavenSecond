@@ -1,4 +1,4 @@
-package com.work.exeption;
+package com.work.exсeption;
 
 import java.io.IOException;
 import java.sql.SQLException;

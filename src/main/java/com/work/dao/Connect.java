@@ -1,4 +1,4 @@
-package com.work.DAO;
+package com.work.dao;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import com.work.exeption.DAOException;
+import com.work.exсeption.DAOException;
 
 public class Connect implements AutoCloseable {
 	

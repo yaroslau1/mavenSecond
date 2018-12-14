@@ -1,8 +1,8 @@
 package com.work.company;
 
-import com.work.DAO.CityConnectDAO;
-import com.work.DAO.CountryConnectDAO;
-import com.work.exeption.DAOException;
+import com.work.dao.CityConnectDAO;
+import com.work.dao.CountryConnectDAO;
+import com.work.exсeption.DAOException;
 
 public class MainAppCompany {
 

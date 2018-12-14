@@ -1,20 +1,12 @@
 package com.work.servlets;
 
-import com.work.DAO.CityConnectDAO;
+import com.work.dao.CityConnectDAO;
 import com.work.entity.City;
-import com.work.exeption.DAOException;
-import com.work.validation.StringValidation;
+import com.work.exсeption.DAOException;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.Enumeration;
-import java.util.List;
-
 
 
 public class ControllerServlet extends HttpServlet {
