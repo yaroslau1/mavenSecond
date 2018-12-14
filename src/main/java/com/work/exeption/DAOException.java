@@ -2,7 +2,6 @@ package com.work.exeption;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class DAOException extends Exception {
 	
@@ -38,15 +37,6 @@ public class DAOException extends Exception {
 	
 	public DAOException(String description, Exception e) {
 		super(description);
-		addSuppressed(e);
-	}
-
-	public DAOException( Exception e) {
 		initCause(e);
 	}
-	
-	public DAOException(String description) {
-		super(description);
-	}
-
 }
