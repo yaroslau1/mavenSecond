@@ -30,7 +30,7 @@
         <th colspan=2>Action</th>
     </tr>
     </thead>
-    <c:forEach items="${cities}" var="cityName">
+    <c:forEach items="${requestScope.cities}" var="cityName">
         <tr>
             <td><c:out value="${cityName.getName()}" /></td>
             <td><c:out value="${cityName.getPopulation()}" /></td>

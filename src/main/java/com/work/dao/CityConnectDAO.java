@@ -37,7 +37,7 @@ public class CityConnectDAO implements CityDAO, AutoCloseable {
 			Class.forName(driverName).newInstance();
 			connection = DriverManager.getConnection(url, user, pass);
 			getAll = connection.prepareStatement("SELECT ID, Name, CountryCode, Population FROM city");
-			addValues = connection.prepareStatement("INSERT INTO world.city (Name, CountryCode, Population) VALUES (?, ?, ?)");
+			addValues = connection.prepareStatement("INSERT INTO city (Name, CountryCode, Population) VALUES (?, ?, ?)");
 			deleteByID = connection.prepareStatement("DELETE FROM city WHERE id = ?");
 			update = connection.prepareStatement("UPDATE city SET Name = ?, Population = ? WHERE Id = ?");
 		} catch (IOException e) {
