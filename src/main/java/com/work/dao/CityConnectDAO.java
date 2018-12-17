@@ -1,4 +1,4 @@
-package com.work.dao;
+package com.work.DAO;
 
 
 import java.io.IOException;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Properties;
 
 import com.work.entity.City;
-import com.work.exсeption.DAOException;
+import com.work.exeption.DAOException;
 
 public class CityConnectDAO implements CityDAO, AutoCloseable {
 
@@ -91,7 +91,7 @@ public class CityConnectDAO implements CityDAO, AutoCloseable {
 			}
 		}
 		if (exception.getSuppressed().length > 0) {
-			throw new DAOException("errors with closing PrepereStatement in city dao", exception);
+			throw new DAOException("errors with closing PrepereStatement in city DAO", exception);
 		}
 	}
 
