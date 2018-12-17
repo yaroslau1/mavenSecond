@@ -1,4 +1,4 @@
-package com.work.DAO;
+package com.work.dao;
 
 
 import java.io.IOException;
@@ -12,8 +12,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
 
+import com.work.dao.CityDAO;
 import com.work.entity.City;
-import com.work.exeption.DAOException;
+import com.work.exсeption.DAOException;
 
 public class CityConnectDAO implements CityDAO, AutoCloseable {
 

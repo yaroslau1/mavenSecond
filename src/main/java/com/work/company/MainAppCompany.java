@@ -1,8 +1,7 @@
 package com.work.company;
 
-import com.work.dao.CityConnectDAO;
-import com.work.dao.CountryConnectDAO;
 import com.work.exсeption.DAOException;
+import com.work.dao.*;
 
 public class MainAppCompany {
 
@@ -10,7 +9,7 @@ public class MainAppCompany {
 		long start;
 		long end;
 		start = System.currentTimeMillis();
-		try (CityConnectDAO cityConnectDAO = new CityConnectDAO(); CountryConnectDAO countryConnectDAO = new CountryConnectDAO()){	
+		try (CityConnectDAO cityConnectDAO = new CityConnectDAO(); CountryConnectDAO countryConnectDAO = new CountryConnectDAO()){
 			//cityConnectDAO.math();
 			System.out.println( cityConnectDAO.getAll() );
 			//System.out.println( cityConnectDAO.findByName("Minsk") );

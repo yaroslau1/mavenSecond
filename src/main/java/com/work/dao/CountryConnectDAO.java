@@ -1,4 +1,4 @@
-package com.work.DAO;
+package com.work.dao;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,9 +12,9 @@ import java.util.List;
 import java.util.Properties;
 
 import com.work.entity.Country;
-import com.work.exeption.DAOException;
+import com.work.exсeption.DAOException;
 
-public class CountryConnectDAO implements CountryDAO, AutoCloseable{
+public class CountryConnectDAO implements com.work.DAO.CountryDAO, AutoCloseable{
 
 	private Connection connection;
 	private PreparedStatement getAll = null;

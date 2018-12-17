@@ -1,4 +1,4 @@
-package com.work.DAO;
+package com.work.dao;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,8 +11,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
 
+import com.work.dao.CountryLanguagesDAO;
 import com.work.entity.CountryLanguage;
-import com.work.exeption.DAOException;
+import com.work.exсeption.DAOException;
 
 public class CountryLanguageConnectDAO implements CountryLanguagesDAO, AutoCloseable{
 
