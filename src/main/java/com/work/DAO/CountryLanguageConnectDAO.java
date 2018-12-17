@@ -13,7 +13,7 @@ import java.util.Properties;
 
 import com.work.dao.CountryLanguagesDAO;
 import com.work.entity.CountryLanguage;
-import com.work.exсeption.DAOException;
+import com.work.exception.DAOException;
 
 public class CountryLanguageConnectDAO implements CountryLanguagesDAO, AutoCloseable{
 

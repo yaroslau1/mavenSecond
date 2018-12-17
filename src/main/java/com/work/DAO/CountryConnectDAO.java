@@ -12,9 +12,9 @@ import java.util.List;
 import java.util.Properties;
 
 import com.work.entity.Country;
-import com.work.exсeption.DAOException;
+import com.work.exception.DAOException;
 
-public class CountryConnectDAO implements com.work.DAO.CountryDAO, AutoCloseable{
+public class CountryConnectDAO implements CountryDAO, AutoCloseable{
 
 	private Connection connection;
 	private PreparedStatement getAll = null;

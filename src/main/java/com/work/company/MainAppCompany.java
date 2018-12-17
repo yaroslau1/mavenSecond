@@ -1,7 +1,8 @@
 package com.work.company;
 
-import com.work.exсeption.DAOException;
+
 import com.work.dao.*;
+import com.work.exception.DAOException;
 
 public class MainAppCompany {
 
@@ -26,7 +27,7 @@ public class MainAppCompany {
 			//cityConnectDAO.updateById(4080);
 			//System.out.println(cityConnectDAO.findByName("Stry"));
 			
-		} catch (DAOException e) {			
+		} catch (DAOException e) {
 			e.printStackTrace();
 		} catch (Exception e1) {
 			

@@ -1,9 +1,9 @@
-package com.work.DAO;
+package com.work.dao;
 
 import java.util.List;
 
 import com.work.entity.CountryLanguage;
-import com.work.exeption.DAOException;
+import com.work.exception.DAOException;
 
 public interface CountryLanguagesDAO {
 	public List<CountryLanguage> getAll () throws DAOException;

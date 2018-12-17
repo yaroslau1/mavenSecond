@@ -14,7 +14,7 @@ import java.util.Properties;
 
 import com.work.dao.CityDAO;
 import com.work.entity.City;
-import com.work.exсeption.DAOException;
+import com.work.exception.DAOException;
 
 public class CityConnectDAO implements CityDAO, AutoCloseable {
 
