@@ -4,7 +4,7 @@
 <%--
   Created by IntelliJ IDEA.
   User: samoilovich_y
-  date: 30.11.2018
+  Date: 30.11.2018
   Time: 10:12
   To change this template use File | Settings | File Templates.
 --%>
