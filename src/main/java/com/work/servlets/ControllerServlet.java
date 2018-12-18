@@ -1,6 +1,5 @@
 package com.work.servlets;
 
-
 import com.work.dao.CityConnectDAO;
 import com.work.entity.City;
 import com.work.exception.DAOException;
@@ -10,6 +9,7 @@ import javax.servlet.http.*;
 import java.io.IOException;
 
 
+//@WebServlet("/controller")
 public class ControllerServlet extends HttpServlet {
 
     @Override
@@ -206,13 +206,10 @@ public class ControllerServlet extends HttpServlet {
         try {
             HttpSession session = request.getSession();
             CityConnectDAO cityConnectDAO = (CityConnectDAO) session.getAttribute("cityConnectDB");
-            System.out.println(cityConnectDAO);
             request.setAttribute("cities", cityConnectDAO.getAll());
-
             getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
         } catch (DAOException e) {
-            e.printStackTrace();
-            //throw new ServletException("Some error with showAll method", e);
+            throw new ServletException("Some error with showAll method", e);
         }
     }
 }

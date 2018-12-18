@@ -11,7 +11,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
 
-import com.work.dao.CountryLanguagesDAO;
 import com.work.entity.CountryLanguage;
 import com.work.exception.DAOException;
 
@@ -92,7 +91,7 @@ public class CountryLanguageConnectDAO implements CountryLanguagesDAO, AutoClose
 			}
 		}
 		if (exception.getSuppressed().length > 0) {
-			throw new DAOException("errors with closing PrepereStatement in country languages DAO", exception);
+			throw new DAOException("errors with closing PrepereStatement in country languages dao", exception);
 		}
 	}
 

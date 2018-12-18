@@ -91,7 +91,7 @@ public class CountryConnectDAO implements CountryDAO, AutoCloseable{
 			}
 		}
 		if (exception.getSuppressed().length > 0) {
-			throw new DAOException("errors with closing PrepereStatement in countries DAO", exception);
+			throw new DAOException("errors with closing PrepereStatement in countries dao", exception);
 		}
 	}
 
