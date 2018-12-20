@@ -66,6 +66,7 @@ public class CityConnectDAO implements CityDAO, AutoCloseable {
             reader.close();
             Class.forName(driverName).newInstance();
             connection = DriverManager.getConnection(url, user, pass);
+            connection.setAutoCommit(false);
             getAll = connection.prepareStatement("SELECT ID, Name, CountryCode, Population FROM city");
             addValues = connection.prepareStatement("INSERT INTO city (Name, CountryCode, Population) VALUES (?, ?, ?)");
             deleteByID = connection.prepareStatement("DELETE FROM city WHERE id = ?");
