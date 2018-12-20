@@ -68,7 +68,7 @@ public class CityConnectDAO implements CityDAO, AutoCloseable {
             connection = DriverManager.getConnection(url, user, pass);
             connection.setAutoCommit(false);
             getAll = connection.prepareStatement("SELECT ID, Name, CountryCode, Population FROM city");
-            addValues = connection.prepareStatement("INSERT INTO city (Name, CountryCode, Population) VALUES (?, ?, ?)");
+            addValues = connection.prepareStatement("INSERT INTO city (ID, Name, CountryCode, Population) VALUES (?, ?, ?, ?)");
             deleteByID = connection.prepareStatement("DELETE FROM city WHERE id = ?");
             update = connection.prepareStatement("UPDATE city SET Name = ?, Population = ? WHERE Id = ?");
         } catch (IOException e) {
@@ -153,7 +153,7 @@ public class CityConnectDAO implements CityDAO, AutoCloseable {
 		List<City> listCity = new LinkedList<>();
 		try (ResultSet resultSet = getAll.executeQuery()){
 			while(resultSet.next()){
-				City city = new City();;
+				City city = new City();
 				String nameForSearch = resultSet.getString("Name");
 				if (nameForSearch.equals(name)) {
 					String id = resultSet.getString("ID");
@@ -174,9 +174,10 @@ public class CityConnectDAO implements CityDAO, AutoCloseable {
 
 	public void insert(City city) throws DAOException {
 		try {
-			addValues.setString(1, city.getName());
-			addValues.setString(2, city.getCountryCode());
-			addValues.setInt(3, city.getPopulation());
+            addValues.setInt(1, city.getId());
+			addValues.setString(2, city.getName());
+			addValues.setString(3, city.getCountryCode());
+			addValues.setInt(4, city.getPopulation());
 			addValues.execute();
 
 		} catch (SQLException e) {
