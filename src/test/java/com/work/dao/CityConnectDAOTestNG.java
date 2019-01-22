@@ -2,8 +2,6 @@ package com.work.dao;
 
 import com.work.entity.City;
 import com.work.exception.DAOException;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
