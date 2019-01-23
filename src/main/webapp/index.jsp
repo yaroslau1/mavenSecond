@@ -41,7 +41,7 @@
             <li><a href="http://localhost:8081/login.jsp">Log in</a></li>
             <li><a href="http://localhost:8081/signin.jsp">Sign in</a></li>
             <li><a href="http://localhost:8081/controller">Get All Cities</a></li>
-            <li><a href="http://localhost:8081/users.jsp">Users</a></li>
+            <li><a href="http://localhost:8081/controller?action=/showUsers">Users</a></li>
         </ul>
     </div>
 </nav>
@@ -72,6 +72,9 @@
             <td>
                 <form action="update.jsp?cityId=${cityName.getId()}&population=${cityName.getPopulation()}"
                       method="post">
+                    <c:set var="cityId" value="${cityName.getId()}" scope="session"  />
+                    <c:set var="population" value="${cityName.getPopulation()}" scope="session"  />
+                    <c:set var="cityNames" value="${cityName.getName()}" scope="session"  />
                     <button type="submit">
                         Update
                     </button>

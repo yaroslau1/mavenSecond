@@ -60,9 +60,23 @@ public class ControllerServlet extends HttpServlet {
             case "/signIn":
                 update(request, response);
                 break;
+            case "/showUsers":
+                showUsers(request, response);
+                break;
             default:
                 showAll(request, response);
                 break;
+        }
+    }
+
+    private void showUsers(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            HttpSession session = request.getSession();
+            UserConnectDAO userConnectDAO = (UserConnectDAO) session.getAttribute("userConnectDB");
+            request.setAttribute("users", userConnectDAO.getAll());
+            getServletContext().getRequestDispatcher("/users.jsp").forward(request, response);
+        } catch (DAOException e) {
+            throw new ServletException("Some error with showUsers method", e);
         }
     }
 
@@ -70,7 +84,6 @@ public class ControllerServlet extends HttpServlet {
         HttpSession session = request.getSession();
         User user;
         UserConnectDAO userConnectDAO = (UserConnectDAO) session.getAttribute("userConnectDB");
-
         try {
             List<User> list = userConnectDAO.findByName(name);
             if( !list.isEmpty()) {
@@ -210,6 +223,8 @@ public class ControllerServlet extends HttpServlet {
         String population = request.getParameter("population");
         HttpSession session = request.getSession();
         session.setAttribute("cityId", id);
+        session.setAttribute("cityNames", cityName);
+        session.setAttribute("population", population);
         CityConnectDAO cityConnectDAO = (CityConnectDAO) session.getAttribute("cityConnectDB");
 
         if (isPopulationValid(population) == null && isCityNameValid(cityName) == null) {
