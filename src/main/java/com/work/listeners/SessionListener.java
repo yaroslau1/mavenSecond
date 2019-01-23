@@ -13,6 +13,7 @@ public class SessionListener implements HttpSessionListener {
         sessionEvent.getSession().setAttribute("name", "Session");
         try {
             CityConnectDAO cityConnectDAO = new CityConnectDAO();
+            UserConnectDAO userConnectDAO = new UserConnectDAO();
             sessionEvent.getSession().setAttribute("cityConnectDB", cityConnectDAO);
             System.out.println(cityConnectDAO);
             System.out.println("Session Created:: ID="+sessionEvent.getSession().getId());
@@ -25,7 +26,9 @@ public class SessionListener implements HttpSessionListener {
         System.out.println("Session Destroyed:: ID="+sessionEvent.getSession().getId());
         try {
             CityConnectDAO cityConnectDAO = (CityConnectDAO) sessionEvent.getSession().getAttribute("cityConnectDAO");
+            UserConnectDAO userConnectDAO = (UserConnectDAO) sessionEvent.getSession().getAttribute("userConnectDAO");
             cityConnectDAO.close();
+            userConnectDAO.close();
         } catch (DAOException e) {
             e.printStackTrace();
         }

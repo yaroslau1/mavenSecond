@@ -4,14 +4,18 @@ public class User {
     private String name;
     private String pass;
     private int age;
+    private String role;
+
+
 
     public User() {
     }
 
-    public User(String name, String pass, int age) {
+    public User(String name, String pass, int age, String role) {
         this.name = name;
         this.pass = pass;
         this.age = age;
+        this.role = role;
     }
 
     public String getName() {
@@ -24,6 +28,14 @@ public class User {
 
     public String getPass() {
         return pass;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public void setPass(String pass) {
@@ -40,6 +52,6 @@ public class User {
 
     @Override
     public String toString() {
-        return name + " " + pass + " " + age;
+        return name + " " + pass + " " + age + " " + role;
     }
 }

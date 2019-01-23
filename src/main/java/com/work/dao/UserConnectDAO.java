@@ -31,10 +31,10 @@ public class UserConnectDAO implements UserDAO, AutoCloseable {
             reader.close();
             Class.forName(driverName).newInstance();
             connection = DriverManager.getConnection(url, user, pass);
-            getAll = connection.prepareStatement("SELECT Name, Password, Age FROM user");
-            insert = connection.prepareStatement("INSERT INTO user (Name, Password, Age) VALUES (?, ?, ?)");
+            getAll = connection.prepareStatement("SELECT Name, Password, Age, Role FROM user");
+            insert = connection.prepareStatement("INSERT INTO user (Name, Password, Age, Role) VALUES (?, ?, ?, ?)");
             delete = connection.prepareStatement("DELETE FROM user WHERE Name = ?");
-            update = connection.prepareStatement("UPDATE user SET Password = ?, Age = ? WHERE Name = ?");
+            update = connection.prepareStatement("UPDATE user SET Password = ?, Age = ?, Role = ? WHERE Name = ?");
         } catch (IOException e) {
             throw new DAOException("Error in constructor with file opening", e);
         } catch (InstantiationException e) {
@@ -57,9 +57,11 @@ public class UserConnectDAO implements UserDAO, AutoCloseable {
                 String age = resultSet.getString("Age");
                 String name = resultSet.getString("Name");
                 String pass = resultSet.getString("Password");
+                String role = resultSet.getString("Role");
                 user.setName(name);
                 user.setPass(pass);
                 user.setAge(Integer.parseInt(age));
+                user.setRole(role);
                 listUsers.add(user);
             }
             return listUsers;
@@ -78,9 +80,11 @@ public class UserConnectDAO implements UserDAO, AutoCloseable {
                 if (nameForSearch.equals(name)) {
                     String age = resultSet.getString("Age");
                     String pass = resultSet.getString("Password");
+                    String role = resultSet.getString("Role");
                     user.setName(name);
                     user.setAge(Integer.parseInt(age));
                     user.setPass(pass);
+                    user.setRole(role);
                     listUsers.add(user);
                 }
             }
@@ -96,6 +100,7 @@ public class UserConnectDAO implements UserDAO, AutoCloseable {
             insert.setString(1, user.getName());
             insert.setString(2, user.getPass());
             insert.setInt(3, user.getAge());
+            insert.setString(4, user.getRole());
             insert.execute();
         } catch (SQLException e) {
             throw new DAOException("error in add user", e);
@@ -117,7 +122,8 @@ public class UserConnectDAO implements UserDAO, AutoCloseable {
         try {
             update.setString(1, user.getPass());
             update.setInt(2, user.getAge());
-            update.setString(3, user.getName());
+            update.setString(3, user.getRole());
+            update.setString(4, user.getName());
             update.execute();
         } catch (SQLException e) {
             throw new DAOException("error in update user", e);
@@ -125,7 +131,7 @@ public class UserConnectDAO implements UserDAO, AutoCloseable {
     }
 
     @Override
-    public void close() throws Exception {
+    public void close() throws DAOException {
         SQLException exception = new SQLException("Some errors with closing");
         if(getAll != null){
             try {

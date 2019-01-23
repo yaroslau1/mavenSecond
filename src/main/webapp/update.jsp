@@ -20,17 +20,46 @@
     <link href="css/bootstrap-social.css" rel="stylesheet">
 </head>
 <body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">list of cities</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#"><span class="glyphicon glyphicon-home"
+                                                 aria-hidden="true"></span> Show all</a></li>
+
+            <li><a href="http://localhost:8081/login.jsp">Log in</a></li>
+            <li><a href="http://localhost:8081/signin.jsp">Sign in</a></li>
+            <li><a href="http://localhost:8081/controller">Get All Cities</a></li>
+            <li><a href="http://localhost:8081/users.jsp">Users</a></li>
+        </ul>
+    </div>
+</nav>
+<br/>
+<h1>Hello, <%=session.getAttribute("userName")%></h1>
+<br/><br/>
 <div class="col-xs-12 col-sm-9">
     <form class="form-horizontal" role="form" method="POST" action="controller?action=/validateUpdate">
         <div class="form-group">
             <label for="cityId" class="col-sm-2 control-label">Id : </label>
             <div class="col-sm-10">
                 <input type="text" readonly class="form-control" id="cityId" name="cityId"
-                       placeholder="<%= request.getAttribute("cityId")%>" value="<%= request.getAttribute("cityId")%>"> <br/>
+                       placeholder="<%= request.getAttribute("cityId")%>" value="<%= request.getAttribute("cityId")%>">
+                <br/>
             </div>
         </div>
         <div class="form-group">
-            <label for="cityName"<% if (request.getAttribute("actionCityName") == "errorInCityName") {%>class="col-sm-2 control-label error"<%}else{%>class="col-sm-2 control-label"<%}%>>
+            <label for="cityName"
+                   <% if (request.getAttribute("actionCityName") == "errorInCityName") {%>class="col-sm-2 control-label error"
+                   <%}else{%>class="col-sm-2 control-label"<%}%>>
                 City Name :
             </label>
             <div class="col-sm-10">
@@ -44,7 +73,9 @@
         </div>
 
         <div class="form-group">
-            <label for="population"<% if (request.getAttribute("actionPopulation") == "errorInPopulation") {%>class="col-sm-2 control-label error"<%}else{%>class="col-sm-2 control-label"<%}%>>
+            <label for="population"
+                   <% if (request.getAttribute("actionPopulation") == "errorInPopulation") {%>class="col-sm-2 control-label error"
+                   <%}else{%>class="col-sm-2 control-label"<%}%>>
                 Population :
             </label>
             <div class="col-sm-10">

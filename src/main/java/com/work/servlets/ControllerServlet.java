@@ -1,12 +1,15 @@
 package com.work.servlets;
 
 import com.work.dao.CityConnectDAO;
+import com.work.dao.UserConnectDAO;
 import com.work.entity.City;
+import com.work.entity.User;
 import com.work.exception.DAOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.util.List;
 
 
 //@WebServlet("/controller")
@@ -23,8 +26,13 @@ public class ControllerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String action = request.getParameter("action");
+        String name = request.getParameter("name");
+
+        if(name == null || name.equals("")){
+            name = "user";
+        }
         if (action == null) {
-            action = "showAll";
+            action = "logIn";
         }
 
         switch (action) {
@@ -46,9 +54,37 @@ public class ControllerServlet extends HttpServlet {
             case "/validateFindByName":
                 findByName(request, response);
                 break;
+            case "/logIn":
+                logIn(request, response, name);
+                break;
+            case "/signIn":
+                update(request, response);
+                break;
             default:
                 showAll(request, response);
                 break;
+        }
+    }
+
+    private void logIn(HttpServletRequest request, HttpServletResponse response, String name) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        User user;
+        UserConnectDAO userConnectDAO = (UserConnectDAO) session.getAttribute("userConnectDB");
+
+        try {
+            List<User> list = userConnectDAO.findByName(name);
+            if( !list.isEmpty()) {
+                user = list.get(0);
+                session.setAttribute("user", user);
+                session.setAttribute("userName", user.getName());
+                //System.out.println(user.getName());
+                //System.out.println(session.getAttribute("userName"));
+                getServletContext().getRequestDispatcher("/controller?action=any").forward(request, response);
+            } else {
+                throw new ServletException("User with name " + name + " not found");
+            }
+        } catch (DAOException e) {
+            throw new ServletException("Some error with findByName method", e);
         }
     }
 
@@ -173,6 +209,7 @@ public class ControllerServlet extends HttpServlet {
         String cityName = request.getParameter("cityName");
         String population = request.getParameter("population");
         HttpSession session = request.getSession();
+        session.setAttribute("cityId", id);
         CityConnectDAO cityConnectDAO = (CityConnectDAO) session.getAttribute("cityConnectDB");
 
         if (isPopulationValid(population) == null && isCityNameValid(cityName) == null) {
@@ -204,8 +241,10 @@ public class ControllerServlet extends HttpServlet {
 
     private void showAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
+            String name;
             HttpSession session = request.getSession();
             CityConnectDAO cityConnectDAO = (CityConnectDAO) session.getAttribute("cityConnectDB");
+            UserConnectDAO userConnectDAO = (UserConnectDAO) session.getAttribute("userConnectDB");
             request.setAttribute("cities", cityConnectDAO.getAll());
             getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
         } catch (DAOException e) {
