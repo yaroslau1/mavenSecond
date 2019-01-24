@@ -85,6 +85,7 @@ public class ControllerServlet extends HttpServlet {
         String pass = request.getParameter("pass");
         User user;
         UserConnectDAO userConnectDAO = (UserConnectDAO) session.getAttribute("userConnectDB");
+        System.out.println((String) session.getAttribute("userConnectDB"));
         try {
             user = userConnectDAO.findByName(name);
             if( user != null && user.getPass().equals(pass)) {
