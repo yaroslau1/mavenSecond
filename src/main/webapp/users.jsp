@@ -65,14 +65,14 @@
             <td>
                 <form action="update.jsp?cityId=${user.getName()}&population=${user.getRole()}"
                       method="post">
-                    <button type="submit">
+                    <button type="submit" disabled>
                         Update
                     </button>
                 </form>
             </td>
             <td>
                 <form action="controller?action=/delete&cityId=${user.getAge()}" method="post">
-                    <button type="submit">
+                    <button type="submit" disabled>
                         Delete
                     </button>
                 </form>

@@ -88,7 +88,7 @@
                 <td><c:out value="${cityName.getPopulation()}"/></td>
                 <td><c:out value="${cityName.getCountryCode()}"/></td>
                 <td>
-                    <form action="/controller?action=/test&cityId=${cityName.getId()}&population=${cityName.getPopulation()}&cityName=${cityName.getName()}" method="post">
+                    <form action="controller?action=/test&cityId=${cityName.getId()}&population=${cityName.getPopulation()}&cityName=${cityName.getName()}" method="post">
                         <button type="submit" class="btn btn-vk">
                             Update
                         </button>
