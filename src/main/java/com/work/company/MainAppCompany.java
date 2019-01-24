@@ -31,8 +31,9 @@ public class MainAppCompany {
 			//cityConnectDAO.updateById(4080);
 			//System.out.println(cityConnectDAO.findByName("Stry"));
 
-            //User user = new User("user", "pass", 20, "user");
+            //User user = new User("qwerty", "pass", 20, "user");
             //userConnectDAO.update(user);
+			//System.out.println(userConnectDAO.findByName(user.getName()));
             System.out.println(userConnectDAO.getAll());
 			
 		} catch (DAOException e) {			

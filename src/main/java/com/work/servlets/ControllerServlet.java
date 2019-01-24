@@ -82,19 +82,19 @@ public class ControllerServlet extends HttpServlet {
 
     private void logIn(HttpServletRequest request, HttpServletResponse response, String name) throws ServletException, IOException {
         HttpSession session = request.getSession();
+        String pass = request.getParameter("pass");
         User user;
         UserConnectDAO userConnectDAO = (UserConnectDAO) session.getAttribute("userConnectDB");
         try {
-            List<User> list = userConnectDAO.findByName(name);
-            if( !list.isEmpty()) {
-                user = list.get(0);
+            user = userConnectDAO.findByName(name);
+            if( user != null && user.getPass().equals(pass)) {
                 session.setAttribute("user", user);
-                session.setAttribute("userName", user.getName());
+                session.setAttribute("userRole", user.getRole());
                 //System.out.println(user.getName());
                 //System.out.println(session.getAttribute("userName"));
-                getServletContext().getRequestDispatcher("/controller?action=any").forward(request, response);
+                getServletContext().getRequestDispatcher("/controller?action=/showAll").forward(request, response);
             } else {
-                throw new ServletException("User with name " + name + " not found");
+                throw new ServletException("User with name " + name + " not found\nor password wrong");
             }
         } catch (DAOException e) {
             throw new ServletException("Some error with findByName method", e);

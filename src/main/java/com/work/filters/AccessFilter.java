@@ -56,9 +56,8 @@ public class AccessFilter implements Filter {
 
     private void check(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws IOException, ServletException {
         HttpSession session = request.getSession();
-        String name = (String) session.getAttribute("userName");
-        System.out.println(name);
-        if(name.equals("admin")){
+        String role = (String) session.getAttribute("userRole");
+        if(role.equals("admin")){
             filterChain.doFilter(request, response);
         } else{
             request.getRequestDispatcher("/accessDenied.jsp").forward(request, response);

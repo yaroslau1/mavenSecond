@@ -9,14 +9,13 @@ import javax.servlet.http.HttpSessionListener;
 public class SessionListener implements HttpSessionListener {
 
     public void sessionCreated(HttpSessionEvent sessionEvent) {
-        //System.out.println("Session Created:: ID="+sessionEvent.getSession().getId());
+        System.out.println("Session Created:: ID="+sessionEvent.getSession().getId());
         sessionEvent.getSession().setAttribute("name", "Session");
         try {
             CityConnectDAO cityConnectDAO = new CityConnectDAO();
             UserConnectDAO userConnectDAO = new UserConnectDAO();
             sessionEvent.getSession().setAttribute("cityConnectDB", cityConnectDAO);
-            System.out.println(cityConnectDAO);
-            System.out.println("Session Created:: ID="+sessionEvent.getSession().getId());
+            sessionEvent.getSession().setAttribute("userConnectDB", userConnectDAO);
         } catch (DAOException e) {
             e.printStackTrace();
         }
