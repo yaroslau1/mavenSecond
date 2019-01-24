@@ -1,7 +1,8 @@
 package com.work.listeners;
 
 import com.work.dao.CityConnectDAO;
-import com.work.exсeption.DAOException;
+import com.work.dao.UserConnectDAO;
+import com.work.exception.DAOException;
 
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
