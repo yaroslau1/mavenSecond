@@ -72,7 +72,6 @@ public class UserConnectDAO implements UserDAO, AutoCloseable {
 
     @Override
     public User findByName(String name) throws DAOException {
-        List<User> listUsers = new LinkedList<>();
         User user = new User();
         try (ResultSet resultSet = getAll.executeQuery()){
             while(resultSet.next()){
@@ -81,13 +80,10 @@ public class UserConnectDAO implements UserDAO, AutoCloseable {
                     String age = resultSet.getString("Age");
                     String pass = resultSet.getString("Password");
                     String role = resultSet.getString("Role");
-                    user.setName(name);
+                    user.setName(nameForSearch);
                     user.setAge(Integer.parseInt(age));
                     user.setPass(pass);
                     user.setRole(role);
-                    listUsers.add(user);
-                } else {
-                    user = null;
                 }
             }
             return user;

@@ -46,49 +46,68 @@
     </div>
 </nav>
 <br/>
-<h1>Hello, <%=session.getAttribute("userName")%></h1>
+<h1>Hello, <%=session.getAttribute("userName")%>
+</h1>
 <br/><br/>
-<form action="insert.jsp" method="post">
-    <button type="submit">Insert</button>
+<form class="form-horizontal" role="form" method="POST" action="insert.jsp">
+    <div class="form-group">
+        <div class="col-sm-offset-4 col-sm-120">
+            <button type="submit" class="btn btn-primary">Insert city</button>
+        </div>
+    </div>
 </form>
-<form action="controller?action=/validateFindByName" method="post">
-    <input type="text" name="cityName" placeholder="Minsk">
-    <button type="submit">Find</button>
-</form>
-<table border="1">
-    <thead>
-    <tr>
-        <th>City Name</th>
-        <th>Population</th>
-        <th>Country Code</th>
-        <th colspan=2>Action</th>
-    </tr>
-    </thead>
-    <c:forEach items="${requestScope.cities}" var="cityName">
+<div class="col-xs-12 col-sm-9">
+    <form class="form-horizontal" role="form" method="POST" action="controller?action=/validateFindByName">
+        <div class="form-group">
+            <label for="cityName" class="col-sm-2 control-label">City name : </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="cityName" name="cityName"
+                       placeholder="Minsk">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Find city</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="col-xs-12 col-sm-9">
+    <table border="1">
+        <thead>
         <tr>
-            <td><c:out value="${cityName.getName()}"/></td>
-            <td><c:out value="${cityName.getPopulation()}"/></td>
-            <td><c:out value="${cityName.getCountryCode()}"/></td>
-            <td>
-                <form action="update.jsp?cityId=${cityName.getId()}&population=${cityName.getPopulation()}"
-                      method="post">
-                    <c:set var="cityId" value="${cityName.getId()}" scope="session"  />
-                    <c:set var="population" value="${cityName.getPopulation()}" scope="session"  />
-                    <c:set var="cityNames" value="${cityName.getName()}" scope="session"  />
-                    <button type="submit">
-                        Update
-                    </button>
-                </form>
-            </td>
-            <td>
-                <form action="controller?action=/delete&cityId=${cityName.getId()}" method="post">
-                    <button type="submit">
-                        Delete
-                    </button>
-                </form>
-            </td>
+            <th>City Name</th>
+            <th>Population</th>
+            <th>Country Code</th>
+            <th colspan=2>Action</th>
         </tr>
-    </c:forEach>
-</table>
+        </thead>
+        <c:forEach items="${requestScope.cities}" var="cityName">
+            <tr>
+                <td><c:out value="${cityName.getName()}"/></td>
+                <td><c:out value="${cityName.getPopulation()}"/></td>
+                <td><c:out value="${cityName.getCountryCode()}"/></td>
+                <td>
+                    <form action="update.jsp?cityId=${cityName.getId()}&population=${cityName.getPopulation()}"
+                          method="post">
+                        <c:set var="cityId" value="${cityName.getId()}" scope="session"/>
+                        <c:set var="population" value="${cityName.getPopulation()}" scope="session"/>
+                        <c:set var="cityNames" value="${cityName.getName()}" scope="session"/>
+                        <button type="submit">
+                            Update
+                        </button>
+                    </form>
+                </td>
+                <td>
+                    <form action="controller?action=/delete&cityId=${cityName.getId()}" method="post">
+                        <button type="submit">
+                            Delete
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        </c:forEach>
+    </table>
+</div>
 </body>
 </html>

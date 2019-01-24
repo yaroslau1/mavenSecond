@@ -17,7 +17,7 @@ public class AccessFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         String action = request.getParameter("action");
-        System.out.println(action);
+        //System.out.println(action);
 
         if (action == null) {
             action = "/logIn";

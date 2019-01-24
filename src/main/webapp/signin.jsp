@@ -43,6 +43,43 @@
     </div>
 </nav>
 <br/><br/><br/>
+<div class="col-xs-12 col-sm-9">
+    <form class="form-horizontal" role="form" method="POST" action="controller?action=/signIn">
+        <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">Name : </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" name="name"
+                       placeholder="Enter name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="age" class="col-sm-2 control-label">Age : </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="age" name="age"
+                       placeholder="Enter name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="pass" class="col-sm-2 control-label">Password : </label>
+            <div class="col-sm-10">
+                <input type="password" hidden class="form-control" id="pass" name="pass"
+                       placeholder="Enter password">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="passConf" class="col-sm-2 control-label">Confirm password : </label>
+            <div class="col-sm-10">
+                <input type="password" hidden class="form-control" id="passConf" name="passConf"
+                       placeholder="Enter password">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Sign in</button>
+            </div>
+        </div>
+    </form>
+</div>
 
 </body>
 </html>
