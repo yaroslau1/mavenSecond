@@ -58,14 +58,14 @@
         </div>
         <div class="form-group">
             <label for="cityName"
-                   <% if (session.getAttribute("actionCityName") == "errorInCityName") {%>class="col-sm-2 control-label error"
+                   <% if (request.getAttribute("actionCityName") == "errorInCityName") {%>class="col-sm-2 control-label error"
                    <%}else{%>class="col-sm-2 control-label"<%}%>>
                 City Name :
             </label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="cityName" name="cityName"
-                       placeholder="<%= session.getAttribute("cityNames")%><%if (session.getAttribute("actionCityName") == "errorInCityName") {%>
-                <% String string = (String) session.getAttribute("errorCityName");%>
+                       placeholder="<%= session.getAttribute("cityName")%><%if (request.getAttribute("actionCityName") == "errorInCityName") {%>
+                <% String string = (String) request.getAttribute("errorCityName");%>
                 <% if (string != null) {%>
                 <%=string%>
                 <%}}%>"> <br/>
@@ -74,13 +74,13 @@
 
         <div class="form-group">
             <label for="population"
-                   <% if (session.getAttribute("actionPopulation") == "errorInPopulation") {%>class="col-sm-2 control-label error"
+                   <% if (request.getAttribute("actionPopulation") == "errorInPopulation") {%>class="col-sm-2 control-label error"
                    <%}else{%>class="col-sm-2 control-label"<%}%>>
                 Population :
             </label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="population" name="population"
-                       placeholder="<%= session.getAttribute("population")%><%if (session.getAttribute("actionPopulation") == "errorInPopulation") { String string = (String) session.getAttribute("errorPopulation");%>
+                       placeholder="<%= session.getAttribute("population")%><%if (request.getAttribute("actionPopulation") == "errorInPopulation") { String string = (String) session.getAttribute("errorPopulation");%>
             <% if (string != null) {%>
             <%=string%>
                 <%}}%>">

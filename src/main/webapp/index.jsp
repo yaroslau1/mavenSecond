@@ -88,19 +88,15 @@
                 <td><c:out value="${cityName.getPopulation()}"/></td>
                 <td><c:out value="${cityName.getCountryCode()}"/></td>
                 <td>
-                    <form action="update.jsp?cityId=${cityName.getId()}&population=${cityName.getPopulation()}"
-                          method="post">
-                        <c:set var="cityId" value="${cityName.getId()}" scope="session"/>
-                        <c:set var="population" value="${cityName.getPopulation()}" scope="session"/>
-                        <c:set var="cityNames" value="${cityName.getName()}" scope="session"/>
-                        <button type="submit">
+                    <form action="/controller?action=/test&cityId=${cityName.getId()}&population=${cityName.getPopulation()}&cityName=${cityName.getName()}" method="post">
+                        <button type="submit" class="btn btn-vk">
                             Update
                         </button>
                     </form>
                 </td>
                 <td>
                     <form action="controller?action=/delete&cityId=${cityName.getId()}" method="post">
-                        <button type="submit">
+                        <button type="submit" class="btn btn-danger">
                             Delete
                         </button>
                     </form>

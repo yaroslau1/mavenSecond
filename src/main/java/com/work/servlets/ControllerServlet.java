@@ -59,10 +59,24 @@ public class ControllerServlet extends HttpServlet {
             case "/showUsers":
                 showUsers(request, response);
                 break;
+            case "/test":
+                test(request, response);
+                break;
             default:
                 showAll(request, response);
                 break;
         }
+    }
+
+    private void test(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        String id = request.getParameter("cityId");
+        String name = request.getParameter("cityName");
+        String population = request.getParameter("population");
+        session.setAttribute("cityName", name);
+        session.setAttribute("cityId", id);
+        session.setAttribute("population", population);
+        getServletContext().getRequestDispatcher("/update.jsp").forward(request, response);
     }
 
     private void signIn(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
